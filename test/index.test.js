@@ -131,4 +131,10 @@ describe('<AutoLinkText />', () => {
       ).toBe('<span><span>This message </span></span>');
     });
   });
+
+  it('should allow to pass additional props for links', () => {
+    expect(
+      renderText('http://opengov.com', { linkProps: { className: 'customClass', target: '_blank' } })
+    ).toBe('<span><a href="http://opengov.com" class="customClass" target="_blank">opengov.com</a></span>');
+  });
 });

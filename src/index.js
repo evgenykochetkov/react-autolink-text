@@ -15,7 +15,11 @@ export default class AutoLinkText extends PureComponent {
         );
       }
       elements.push(
-        React.createElement('a', { href: match.getAnchorHref() }, match.getAnchorText())
+        React.createElement(
+          'a',
+          Object.assign({}, { href: match.getAnchorHref() }, this.props.linkProps),
+          match.getAnchorText()
+        )
       );
       lastIndex = match.position.end;
     });
@@ -81,6 +85,7 @@ export default class AutoLinkText extends PureComponent {
 
 AutoLinkText.propTypes = {
   text: PropTypes.string,
+  linkProps: PropTypes.object,
   maxLength: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string
